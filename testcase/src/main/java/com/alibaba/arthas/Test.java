@@ -1,5 +1,6 @@
 package com.alibaba.arthas;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Test {
         System.out.println(p);
 
         while (true) {
-            int random = new Random().nextInt(40);
+            int random = new SecureRandom().nextInt(40);
             String name = list.get(random).getName();
             list.get(random).setName(null);
             test(list);

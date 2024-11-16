@@ -1,12 +1,13 @@
 package demo;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MathGame {
-    private static Random random = new Random();
+    private static Random random = new SecureRandom();
 
     private int illegalArgumentCount = 0;
 
