@@ -85,15 +85,15 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <unzip src="${project.build.directory}/${project.build.finalName}-shade.${project.packaging}" dest="${project.build.directory}/tmp_out" />
+                                <tasks>
                                 <copy overwrite="true" todir="${project.build.directory}/tmp_out/com/taobao/arthas/core/command/logger">
-                                    <fileset dir="${project.build.directory}/classes/com/taobao/arthas/core/command/logger" />
+                                    m/taobao/arthas/core/command/logger">
                                 </copy>
                                 <!-- 从web-ui复制打包好的js/html -->
                                 <copy overwrite="true" todir="${project.build.directory}/tmp_out/com/taobao/arthas/core/http/">
-                                    <fileset dir="${project.build.directory}/../../web-ui/arthasWebConsole/dist/ui/" />
+                                    mp_out/com/taobao/arthas/core/http/">
                                 </copy>
-                                <zip basedir="${project.build.directory}/tmp_out" destfile="${project.build.directory}/${project.build.finalName}-shade.${project.packaging}" />
+                                </copy>
                             </tasks>
                         </configuration>
                         <goals>
@@ -262,6 +262,10 @@
             <version>0.1</version>
             <scope>provided</scope>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pixee</groupId>
+            <artifactId>java-security-toolkit</artifactId>
         </dependency>
     </dependencies>
 

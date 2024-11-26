@@ -1,5 +1,6 @@
 package com.taobao.arthas.common;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -58,7 +59,7 @@ public class ExecutingCommand {
         BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
         try {
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 sa.add(line);
             }
             p.waitFor();

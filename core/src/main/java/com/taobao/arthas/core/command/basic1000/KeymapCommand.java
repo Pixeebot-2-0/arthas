@@ -15,6 +15,7 @@ import com.taobao.text.ui.TableElement;
 import com.taobao.text.util.RenderUtil;
 
 import static com.taobao.text.ui.Element.label;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class KeymapCommand extends AnnotatedCommand {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(inputrc));
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 line = line.trim();
                 if (line.startsWith("#") || "".equals(line)) {
                     continue;

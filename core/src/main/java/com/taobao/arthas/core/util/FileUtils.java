@@ -1,9 +1,7 @@
 package com.taobao.arthas.core.util;
 
-/**
- * Copied from {@link org.apache.commons.io.FileUtils}
- * @author ralf0131 2016-12-28 11:46.
- */
+
+import io.github.pixee.security.BoundedLineReader;
 import io.termd.core.util.Helper;
 
 import java.io.*;
@@ -125,7 +123,7 @@ public class FileUtils {
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 history.add(Helper.toCodePoints(line));
             }
         } catch (IOException e) {
@@ -170,7 +168,7 @@ public class FileUtils {
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 if (!StringUtils.isBlank(line)) {
                     history.add(line);
                 }
