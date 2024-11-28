@@ -1,5 +1,6 @@
 package com.taobao.arthas.client;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -141,10 +142,10 @@ public class TelnetConsole {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(batchFile));
-            String line = br.readLine();
+            String line = BoundedLineReader.readLine(br, 5_000_000);
             while (line != null) {
                 list.add(line);
-                line = br.readLine();
+                line = BoundedLineReader.readLine(br, 5_000_000);
             }
         } catch (IOException e) {
             e.printStackTrace();

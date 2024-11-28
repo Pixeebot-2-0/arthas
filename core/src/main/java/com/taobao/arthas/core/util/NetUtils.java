@@ -3,6 +3,7 @@ package com.taobao.arthas.core.util;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.taobao.arthas.common.IOUtils;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class NetUtils {
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String line = null;
             StringBuilder sb = new StringBuilder();
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 sb.append(line).append("\n");
             }
             int statusCode = urlConnection.getResponseCode();
@@ -85,7 +86,7 @@ public class NetUtils {
             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line = null;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 sb.append(line);
                 sb.append("\n");
             }
@@ -141,7 +142,7 @@ public class NetUtils {
             StringBuilder sb = new StringBuilder();
             String line = null;
             boolean start = false;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 if (start) {
                     sb.append(line).append("\n");
                 }

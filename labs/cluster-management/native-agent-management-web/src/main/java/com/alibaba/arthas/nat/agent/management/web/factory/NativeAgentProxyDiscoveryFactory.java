@@ -1,6 +1,7 @@
 package com.alibaba.arthas.nat.agent.management.web.factory;
 
 import com.alibaba.arthas.nat.agent.management.web.discovery.NativeAgentProxyDiscovery;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class NativeAgentProxyDiscoveryFactory {
             }
 
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (!line.trim().isEmpty() && line.contains("=")) {
                     String[] parts = line.split("=", 2);
                     if (parts.length == 2) {

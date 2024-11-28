@@ -16,6 +16,7 @@
  */
 package com.taobao.arthas.core.util;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -913,10 +914,10 @@ public abstract class StringUtils {
         List<String> result = new ArrayList<String>();
         BufferedReader reader = new BufferedReader(new StringReader(text));
         try {
-            String line = reader.readLine();
+            String line = BoundedLineReader.readLine(reader, 5_000_000);
             while (line != null) {
                 result.add(line);
-                line = reader.readLine();
+                line = BoundedLineReader.readLine(reader, 5_000_000);
             }
         } catch (IOException exc) {
             // quit

@@ -5,6 +5,7 @@ package com.taobao.arthas.core.util;
  * @author ralf0131 2016-12-28 11:41.
  */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -133,7 +134,7 @@ public class IOUtils {
             StringBuilder sb = new StringBuilder();
             br = new BufferedReader(new InputStreamReader(input));
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 sb.append(line).append("\n");
             }
             return sb.toString();
