@@ -1,6 +1,7 @@
 package com.taobao.arthas.common;
 
 import io.github.pixee.security.BoundedLineReader;
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,7 +45,7 @@ public class ExecutingCommand {
     public static List<String> runNative(String[] cmdToRunWithArgs) {
         Process p = null;
         try {
-            p = Runtime.getRuntime().exec(cmdToRunWithArgs);
+            p = SystemCommand.runCommand(Runtime.getRuntime(), cmdToRunWithArgs);
         } catch (SecurityException e) {
             AnsiLog.trace("Couldn't run command {}:", Arrays.toString(cmdToRunWithArgs));
             AnsiLog.trace(e);
