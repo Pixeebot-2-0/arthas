@@ -1,5 +1,7 @@
 package com.taobao.arthas.boot;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -149,7 +151,7 @@ public class DownloadUtils {
      * @throws IOException
      */
     private static URLConnection openURLConnection(String url) throws MalformedURLException, IOException {
-        URLConnection connection = new URL(url).openConnection();
+        URLConnection connection = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection();
         if (connection instanceof HttpURLConnection) {
             connection.setConnectTimeout(CONNECTION_TIMEOUT);
             // normally, 3xx is redirect
