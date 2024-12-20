@@ -4,6 +4,8 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.taobao.arthas.common.IOUtils;
 import io.github.pixee.security.BoundedLineReader;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class NetUtils {
         HttpURLConnection urlConnection = null;
         InputStream in = null;
         try {
-            URL url = new URL(urlString);
+            URL url = Urls.create(urlString, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
             urlConnection.setReadTimeout(READ_TIMEOUT);;
@@ -78,7 +80,7 @@ public class NetUtils {
     public static String simpleRequest(String url) {
         BufferedReader br = null;
         try {
-            URL obj = new URL(url);
+            URL obj = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestProperty("Accept", "application/json");
             int responseCode = con.getResponseCode();

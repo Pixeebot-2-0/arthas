@@ -94,7 +94,7 @@
         <project.build.outputTimestamp>2020-09-27T15:10:43Z</project.build.outputTimestamp>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <netty.version>4.1.113.Final</netty.version>
-        <versions.java-security-toolkit>1.2.0</versions.java-security-toolkit>
+        <versions.java-security-toolkit>1.2.1</versions.java-security-toolkit>
     </properties>
 
     <dependencyManagement>
@@ -236,6 +236,7 @@
             <dependency>
                 <groupId>io.github.pixee</groupId>
                 <artifactId>java-security-toolkit</artifactId>
+                
                 
                 
                 
