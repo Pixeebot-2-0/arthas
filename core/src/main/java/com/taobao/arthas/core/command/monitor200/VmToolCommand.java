@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.lang.instrument.Instrumentation;
+import java.nio.file.Files;
 import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -276,7 +277,7 @@ public class VmToolCommand extends AnnotatedCommand {
             FileOutputStream tmpLibOutputStream = null;
             FileInputStream libInputStream = null;
             try {
-                File tmpLibFile = File.createTempFile(VmTool.JNI_LIBRARY_NAME, null);
+                File tmpLibFile = Files.createTempFile(VmTool.JNI_LIBRARY_NAME, null).toFile();
                 tmpLibOutputStream = new FileOutputStream(tmpLibFile);
                 libInputStream = new FileInputStream(libPath);
 

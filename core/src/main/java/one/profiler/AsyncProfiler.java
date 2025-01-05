@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 /**
  * Java API for in-process profiling. Serves as a wrapper around
@@ -65,8 +66,7 @@ public class AsyncProfiler implements AsyncProfilerMXBean {
 
         try {
             String extractPath = System.getProperty("one.profiler.extractPath");
-            File file = File.createTempFile("libasyncProfiler-", ".so",
-                    extractPath == null || extractPath.isEmpty() ? null : new File(extractPath));
+            File file = Files.createTempFile(extractPath == null || extractPath.isEmpty() ? null : new File(extractPath).toPath(), "libasyncProfiler-", ".so").toFile();
             try (FileOutputStream out = new FileOutputStream(file)) {
                 byte[] buf = new byte[32000];
                 for (int bytes; (bytes = in.read(buf)) >= 0; ) {
