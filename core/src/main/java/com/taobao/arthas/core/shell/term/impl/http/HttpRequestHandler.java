@@ -72,10 +72,10 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
                 }
 
                 //handle webui requests
-                if (path.equals("/ui")) {
+                if ("/ui".equals(path)) {
                     response = createRedirectResponse(request, "/ui/");
                 }
-                if (path.equals("/ui/")) {
+                if ("/ui/".equals(path)) {
                     path += "index.html";
                 }
 

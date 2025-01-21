@@ -125,7 +125,7 @@ public class GrpcResultViewResolver {
         Method[] declaredMethods = viewClass.getDeclaredMethods();
         for (int i = 0; i < declaredMethods.length; i++) {
             Method method = declaredMethods[i];
-            if (method.getName().equals("draw")) {
+            if ("draw".equals(method.getName())) {
                 Class<?>[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes.length == 2
                         && parameterTypes[0] == ArthasStreamObserver.class

@@ -146,7 +146,7 @@ public class NetUtils {
                 if (start) {
                     sb.append(line).append("\n");
                 }
-                if (line.equals(QOS_RESPONSE_START_LINE)) {
+                if (QOS_RESPONSE_START_LINE.equals(line)) {
                     start = true;
                 }
             }

@@ -42,19 +42,19 @@ public class ShellLineHandler implements Handler<String> {
         }
 
         String name = first.value();
-        if (name.equals("exit") || name.equals("logout") || name.equals("q") || name.equals("quit")) {
+        if ("exit".equals(name) || "logout".equals(name) || "q".equals(name) || "quit".equals(name)) {
             handleExit();
             return;
-        } else if (name.equals("jobs")) {
+        } else if ("jobs".equals(name)) {
             handleJobs();
             return;
-        } else if (name.equals("fg")) {
+        } else if ("fg".equals(name)) {
             handleForeground(tokens);
             return;
-        } else if (name.equals("bg")) {
+        } else if ("bg".equals(name)) {
             handleBackground(tokens);
             return;
-        } else if (name.equals("kill")) {
+        } else if ("kill".equals(name)) {
             handleKill(tokens);
             return;
         }
