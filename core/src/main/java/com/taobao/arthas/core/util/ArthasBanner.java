@@ -8,6 +8,8 @@ import com.taobao.text.Color;
 import com.taobao.text.Decoration;
 import com.taobao.text.ui.TableElement;
 import com.taobao.text.util.RenderUtil;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -146,7 +148,7 @@ public class ArthasBanner {
      * @throws IOException
      */
     private static URLConnection openURLConnection(String url) throws MalformedURLException, IOException {
-        URLConnection connection = new URL(url).openConnection();
+        URLConnection connection = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection();
         if (connection instanceof HttpURLConnection) {
             connection.setConnectTimeout(CONNECTION_TIMEOUT);
             connection.setReadTimeout(READ_TIMEOUT);

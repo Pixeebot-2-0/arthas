@@ -1,5 +1,7 @@
 package com.taobao.arthas.core.util;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -131,7 +133,7 @@ public class UserStatUtil {
                 if (queryData.length() != 0) {
                     link = link + "?" + queryData;
                 }
-                URL url = new URL(link);
+                URL url = Urls.create(link, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
                 URLConnection connection = url.openConnection();
                 connection.setConnectTimeout(1000);
                 connection.setReadTimeout(1000);
