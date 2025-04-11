@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +85,7 @@ public class DownloadUtils {
 
         File unzipDir = new File(savePath, arthasVersion + File.separator + "arthas");
 
-        File tempFile = File.createTempFile("arthas", "arthas");
+        File tempFile = Files.createTempFile("arthas", "arthas").toFile();
 
         AnsiLog.debug("Arthas download temp file: " + tempFile.getAbsolutePath());
 

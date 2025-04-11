@@ -13,6 +13,7 @@ import com.taobao.middleware.cli.annotations.Description;
 import com.taobao.middleware.cli.annotations.Name;
 import com.taobao.middleware.cli.annotations.Option;
 import com.taobao.middleware.cli.annotations.Summary;
+import java.nio.file.Files;
 import jdk.jfr.Configuration;
 import jdk.jfr.Recording;
 
@@ -406,7 +407,7 @@ public class JFRCommand extends AnnotatedCommand {
                         new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".jfr")
                         .getAbsolutePath();
             } else {
-                this.filename = File.createTempFile("arthas-output", ".jfr").getAbsolutePath();
+                this.filename = Files.createTempFile("arthas-output", ".jfr").toFile().getAbsolutePath();
             }
         }
         return filename;
