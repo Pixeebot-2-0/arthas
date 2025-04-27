@@ -80,13 +80,13 @@ public class KeymapCommand extends AnnotatedCommand {
             }
         }
 
-        if (key.equals("\"\\e[D\"")) {
+        if ("\"\\e[D\"".equals(key)) {
             return "Left arrow";
-        } else if (key.equals("\"\\e[C\"")) {
+        } else if ("\"\\e[C\"".equals(key)) {
             return "Right arrow";
-        } else if (key.equals("\"\\e[B\"")) {
+        } else if ("\"\\e[B\"".equals(key)) {
             return "Down arrow";
-        } else if (key.equals("\"\\e[A\"")) {
+        } else if ("\"\\e[A\"".equals(key)) {
             return "Up arrow";
         }
 

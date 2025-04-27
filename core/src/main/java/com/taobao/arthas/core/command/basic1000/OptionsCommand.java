@@ -156,7 +156,7 @@ public class OptionsCommand extends AnnotatedCommand {
             }
 
             // FIXME hack for ongl strict
-            if (field.getName().equals("strict")) {
+            if ("strict".equals(field.getName())) {
                 GlobalOptions.updateOnglStrict(Boolean.valueOf(optionValue));
                 logger.info("update ongl strict to: {}", optionValue);
             }

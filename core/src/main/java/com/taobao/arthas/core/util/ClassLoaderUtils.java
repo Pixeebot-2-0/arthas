@@ -142,7 +142,7 @@ public class ClassLoaderUtils {
 
                 // jdk 9~15: jdk.internal.loader.ClassLoaders$AppClassLoader.ucp
                 // jdk 16~17: jdk.internal.loader.BuiltinClassLoader.ucp
-                while (ucpField == null && !ucpOwner.getName().equals("java.lang.Object")) {
+                while (ucpField == null && !"java.lang.Object".equals(ucpOwner.getName())) {
                     try {
                         ucpField = ucpOwner.getDeclaredField("ucp");
                     } catch (NoSuchFieldException ex) {
