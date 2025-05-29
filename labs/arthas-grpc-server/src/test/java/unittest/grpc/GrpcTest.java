@@ -7,6 +7,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
+import java.security.SecureRandom;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class GrpcTest {
     private static final String HOST_PORT = HOST + ":" + PORT;
     private static final String UNIT_TEST_GRPC_SERVICE_PACKAGE_NAME = "unittest.grpc.service.impl";
     private ArthasUnittestServiceGrpc.ArthasUnittestServiceBlockingStub blockingStub = null;
-    Random random = new Random();
+    Random random = new SecureRandom();
     ExecutorService threadPool = Executors.newFixedThreadPool(10);
 
     @Before

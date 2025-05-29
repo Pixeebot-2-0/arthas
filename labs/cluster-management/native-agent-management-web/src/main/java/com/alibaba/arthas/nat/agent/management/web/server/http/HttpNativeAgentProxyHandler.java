@@ -13,6 +13,7 @@ import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -61,7 +62,7 @@ public class HttpNativeAgentProxyHandler {
             return null;
         }
         // Return a random index of proxy address, like 127.0.0.1:2233
-        Random random = new Random();
+        Random random = new SecureRandom();
         int randomIndex = random.nextInt(proxyList.size());
         return proxyList.get(randomIndex);
     }
