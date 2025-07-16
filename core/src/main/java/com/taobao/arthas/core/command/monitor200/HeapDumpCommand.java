@@ -3,6 +3,7 @@ package com.taobao.arthas.core.command.monitor200;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -54,7 +55,7 @@ public class HeapDumpCommand extends AnnotatedCommand {
             String dumpFile = file;
             if (dumpFile == null || dumpFile.isEmpty()) {
                 String date = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
-                File file = File.createTempFile("heapdump" + date + (live ? "-live" : ""), ".hprof");
+                File file = Files.createTempFile("heapdump" + date + (live ? "-live" : ""), ".hprof").toFile();
                 dumpFile = file.getAbsolutePath();
                 file.delete();
             }

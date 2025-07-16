@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.CodeSource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -549,7 +550,7 @@ public class ProfilerCommand extends AnnotatedCommand {
             FileOutputStream tmpLibOutputStream = null;
             FileInputStream libInputStream = null;
             try {
-                File tmpLibFile = File.createTempFile(VmTool.JNI_LIBRARY_NAME, null);
+                File tmpLibFile = Files.createTempFile(VmTool.JNI_LIBRARY_NAME, null).toFile();
                 tmpLibOutputStream = new FileOutputStream(tmpLibFile);
                 libInputStream = new FileInputStream(libPath);
 
@@ -851,7 +852,7 @@ public class ProfilerCommand extends AnnotatedCommand {
                         new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + "." + fileExt)
                                 .getAbsolutePath();
             } else {
-                this.file = File.createTempFile("arthas-output", "." + fileExt).getAbsolutePath();
+                this.file = Files.createTempFile("arthas-output", "." + fileExt).toFile().getAbsolutePath();
             }
         }
         return file;
