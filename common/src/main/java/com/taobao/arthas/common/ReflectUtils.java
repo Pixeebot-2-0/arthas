@@ -310,7 +310,7 @@ public class ReflectUtils {
 
     public static Method findNewInstance(Class iface) {
         Method m = findInterfaceMethod(iface);
-        if (!m.getName().equals("newInstance")) {
+        if (!"newInstance".equals(m.getName())) {
             throw new IllegalArgumentException(iface + " missing newInstance method");
         }
         return m;
