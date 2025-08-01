@@ -865,11 +865,11 @@ public class ProfilerCommand extends AnnotatedCommand {
         if (this.format == null) {
             fileExt = "html";
         } else if (this.format.startsWith("flat") || this.format.startsWith("traces") 
-                || this.format.equals("collapsed")) {
+                || "collapsed".equals(this.format)) {
             fileExt = "txt";
-        } else if (this.format.equals("flamegraph") || this.format.equals("tree")) {
+        } else if ("flamegraph".equals(this.format) || "tree".equals(this.format)) {
             fileExt = "html";
-        } else if (this.format.equals("jfr")) {
+        } else if ("jfr".equals(this.format)) {
             fileExt = "jfr";
         } else {
             // illegal -o option makes async-profiler use flat
@@ -939,10 +939,10 @@ public class ProfilerCommand extends AnnotatedCommand {
             CliToken cliToken_2 = tokens.get(tokens.size() - 2);
             if (cliToken_1.isBlank()) {
                 String token_2 = cliToken_2.value();
-                if (token_2.equals("-e") || token_2.equals("--event")) {
+                if ("-e".equals(token_2) || "--event".equals(token_2)) {
                     CompletionUtils.complete(completion, events());
                     return;
-                } else if (token_2.equals("-f") || token_2.equals("--format")) {
+                } else if ("-f".equals(token_2) || "--format".equals(token_2)) {
                     CompletionUtils.complete(completion, Arrays.asList("html", "jfr"));
                     return;
                 }

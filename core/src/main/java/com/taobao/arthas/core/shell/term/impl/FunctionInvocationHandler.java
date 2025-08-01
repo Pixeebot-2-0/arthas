@@ -32,7 +32,7 @@ public class FunctionInvocationHandler implements InvocationHandler {
 
         String name = method.getName();
 
-        if (name.equals("apply")) {
+        if ("apply".equals(name)) {
             Session session = termImpl.getSession();
             if (session != null) {
                 boolean authenticated = session.get(ArthasConstants.SUBJECT_KEY) != null;

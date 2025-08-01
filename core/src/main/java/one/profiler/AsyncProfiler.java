@@ -89,11 +89,11 @@ public class AsyncProfiler implements AsyncProfilerMXBean {
         String os = System.getProperty("os.name").toLowerCase();
         String arch = System.getProperty("os.arch").toLowerCase();
         if (os.contains("linux")) {
-            if (arch.equals("amd64") || arch.equals("x86_64") || arch.contains("x64")) {
+            if ("amd64".equals(arch) || "x86_64".equals(arch) || arch.contains("x64")) {
                 return "linux-x64";
-            } else if (arch.equals("aarch64") || arch.contains("arm64")) {
+            } else if ("aarch64".equals(arch) || arch.contains("arm64")) {
                 return "linux-arm64";
-            } else if (arch.equals("aarch32") || arch.contains("arm")) {
+            } else if ("aarch32".equals(arch) || arch.contains("arm")) {
                 return "linux-arm32";
             } else if (arch.contains("86")) {
                 return "linux-x86";

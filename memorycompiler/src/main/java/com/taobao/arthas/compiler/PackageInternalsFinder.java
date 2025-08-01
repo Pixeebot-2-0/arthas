@@ -181,8 +181,8 @@ public class PackageInternalsFinder {
                             .replace(rootEntryName, "")
                             .replace("/", ".");
                     if (className.startsWith(".")) className = className.substring(1);
-                    if (className.equals("package-info")
-                            || className.equals("module-info")
+                    if ("package-info".equals(className)
+                            || "module-info".equals(className)
                             || className.lastIndexOf(".") == -1) {
                         continue;
                     }
